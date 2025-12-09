@@ -9,6 +9,8 @@ from routes.auth import auth_bp
 from routes.products import products_bp
 
 app = Flask(__name__)
+if __name__ == "__main__":
+    app.run(debug=True)
 app.secret_key = config.SECRET_KEY
 
 # Bảo vệ CSRF
@@ -28,3 +30,4 @@ if __name__ == '__main__':
     # Chỉ chạy debug mode khi chạy local
     debug_mode = os.environ.get('FLASK_ENV') != 'production'
     app.run(debug=debug_mode, host='0.0.0.0', port=int(os.environ.get('PORT', 5000)))
+
